@@ -1,0 +1,53 @@
+# ESP32 Temperatur Logger med Webserver og Graf
+
+Dette projekt er en ESP32-baseret temperatur-logger, der bruger en DS18B20-sensor til at måle temperaturen og vise den på en webserver. Temperaturen logges i en fil ved hjælp af LITTLEFS og vises i realtid med en graf på en webside.
+
+## 📌 Funktioner
+- Læser temperatur fra en **DS18B20** sensor.
+- Logger data til **LITTLEFS** filsystemet.
+- Viser realtidsdata via en webserver.
+- Plotter temperaturændringer i en interaktiv graf.
+- Automatisk WiFi-forbindelse via **WiFiManager**.
+- Henter og viser tidsstempler via **NTP-server**.
+
+## 📜 Installation
+1. **Installer nødvendige biblioteker** i Arduino IDE:
+   - `OneWire`
+   - `DallasTemperature`
+   - `ESPAsyncWebServer`
+   - `WiFiManager`
+   - `LITTLEFS`
+
+2. **Upload koden til ESP32** ved at tilslutte den til din computer og vælge den rette COM-port.
+
+3. **Åbn Serial Monitor** i Arduino IDE og noter ESP32's IP-adresse.
+
+4. **Få adgang til webserveren** ved at åbne ESP32’s IP-adresse i din browser.
+
+## 🔧 Hardware Opsætning
+| Komponent     | Forbindelse til ESP32 |
+|--------------|----------------------|
+| **DS18B20**  | GPIO4 (Data)          |
+| **Pull-up modstand** | 4.7kΩ mellem VCC og Data |
+##  Wokwi Simulering
+ ![Wokwi Simulation]  (Test-testemp2\Wokwi-diagram\Screenshot 2025-02-21 095839.png)
+
+## 🌐 Web Interface
+Webserveren viser:
+- **Live temperatur** i °C.
+- **Loggede temperaturer** fra filsystemet.
+- **En interaktiv graf** med realtidsdata.
+
+## 🛠 Fejlfinding
+- **Ingen temperaturændringer?**  
+  - Kontroller forbindelserne til DS18B20.
+  - Sørg for, at sensoren ikke returnerer `-127.00°C` (tegn på dårlig forbindelse).
+  
+- **Websiden opdateres ikke?**  
+  - Tjek om ESP32 er forbundet til WiFi.
+  - Prøv at genstarte ESP32.
+
+## 📚 Kilder
+Dette projekt er inspireret af [Random Nerd Tutorials](https://randomnerdtutorials.com/esp32-esp8266-plot-chart-web-server/).
+
+---
